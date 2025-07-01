@@ -1,0 +1,26 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:FloatingMenu": "node ./build/build.js",
+    "watch:FloatingMenu": "node ./build/build.js --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "concurrently": "^9.2.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^17.0.0",
+    "esbuild": "^0.25.5",
+    "esbuild-plugin-conditional-build": "^1.0.2",
+    "esbuild-plugin-replace": "^1.4.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}

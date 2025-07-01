@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" class="icon">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="svg_3" transform="translate(1.625 0) matrix(1 0 0 1 -53.25 11.545)">
+   <path d="m272.95,427.09l261,0c2.39,0 4.35,-3.6 4.35,-8l0,-56c0,-4.4 -1.96,-8 -4.35,-8l-261,0c-2.39,0 -4.35,3.6 -4.35,8l0,56c0,4.4 1.96,8 4.35,8zm-4.35,204c0,4.4 1.96,8 4.35,8l261,0c2.39,0 4.35,-3.6 4.35,-8l0,-56c0,-4.4 -1.96,-8 -4.35,-8l-261,0c-2.39,0 -4.35,3.6 -4.35,8l0,56zm274.05,-486l-426.3,0c-2.39,0 -4.35,3.6 -4.35,8l0,56c0,4.4 1.96,8 4.35,8l426.3,0c2.39,0 4.35,-3.6 4.35,-8l0,-56c0,-4.4 -1.96,-8 -4.35,-8zm0,632l-426.3,0c-2.39,0 -4.35,3.6 -4.35,8l0,56c0,4.4 1.96,8 4.35,8l426.3,0c2.39,0 4.35,-3.6 4.35,-8l0,-56c0,-4.4 -1.96,-8 -4.35,-8zm-414.12,-149.9l84.99,-123.1a4.81,8.84 0 0 0 0,-13.9l-84.99,-123.2c-3.15,-4.6 -7.83,-0.5 -7.83,6.9l0,246.3a4.84,8.9 0 0 0 7.83,7z" id="svg_1" transform="rotate(-180 329.5 497.09)"/>
+   <text fill="#048af7" font-family="Sans-serif" font-size="810" font-weight="bold" id="svg_2" stroke="null" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-opacity="null" stroke-width="0" style="--noir-inline-fill: #33a6fc;" text-anchor="middle" x="790" xml:space="preserve" y="780">1</text>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "system",
+    "outFile": "./output/bundle.js",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "lib":["es2015","dom"]
+  },
+  "include": ["./src/**/*"]
+}
