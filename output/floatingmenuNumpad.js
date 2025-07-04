@@ -447,7 +447,7 @@ var bundle_numpadviewer = (() => {
  *  the "bundle_numpadviewer" will be replaced at build time by the configured "GlobalVar" in esbuild configuration file config.js
  * @returns 
  */
-export async function retrieveBTTItems() {
+async function retrieveBTTItems() {
     let items = await bundle_numpadviewer.getItems();
     console.log(items);
     return items;
