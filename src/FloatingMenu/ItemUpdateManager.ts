@@ -7,6 +7,9 @@ import { IBTTProps, isEmpty, IItemPosition, IItemProperties } from "./Types/BTTI
 import { IItemsConfig } from "./Types/ItemsConfig";
 import { MenuConfig } from "./Types/MenuIConfig";
 
+/**
+ * ss
+ */
 export class ItemUpdateManager {
     // @ts-expect-error
     private readonly _RootIconPath: string = __FullPath__; // __FullPath__ will be replace at build time

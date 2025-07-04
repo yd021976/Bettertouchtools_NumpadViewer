@@ -1,5 +1,5 @@
 "use strict";
-var btt = (() => {
+var bundle_numpadviewer = (() => {
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -21,7 +21,7 @@ var btt = (() => {
   // src/FloatingMenu/main.ts
   var main_exports = {};
   __export(main_exports, {
-    items: () => items
+    getItems: () => getItems
   });
 
   // src/app_mappings.ts
@@ -291,8 +291,8 @@ var btt = (() => {
      */
     constructor(itemNames, appMappings) {
       // @ts-expect-error
-      this._RootIconPath = "/Volumes/Travail/Programming/www/Bettertouchtools_NumpadViewer/src/icons/shortcuts";
-      // "/Volumes/Travail/Programming/www/Bettertouchtools_NumpadViewer/src/icons/shortcuts" will be replace at build time
+      this._RootIconPath = __FullPath__;
+      // __FullPath__ will be replace at build time
       this.FloatingMenuItems = __FloatingMenuItems;
       this.MenuConfig = __MenuConfig;
       this.ItemStates = __ItemBackgroundStates;
@@ -355,7 +355,7 @@ var btt = (() => {
      * @returns Array of floating menu items to create by BTT in the format expected by BTT floating menu scripting
      */
     async parseRows() {
-      let items2 = [];
+      let items = [];
       var rowIndex = 1, columnIndex = 1, width = 0, height = 0;
       for (const numpadRow of this.FloatingMenuItems) {
         columnIndex = 1;
@@ -366,7 +366,7 @@ var btt = (() => {
             const itemKey = Object.keys(item)[0];
             const itemObj = item[itemKey];
             let data = await this.createBTTItemJSON(itemObj, rowIndex, columnIndex);
-            items2.push(data);
+            items.push(data);
             if (itemObj.type != void 0 && itemObj.type == "doubleWidth") columnIndex++;
             let currentHeight = Math.abs(data.BTTMenuItemY) + data.BTTMenuItemMaxHeight + this.MenuConfig.Padding;
             height = height < currentHeight ? currentHeight : height;
@@ -379,7 +379,7 @@ var btt = (() => {
       }
       await UpdateBttVariable("numpad_width", width);
       await UpdateBttVariable("numpad_height", height);
-      return items2;
+      return items;
     }
     /**
      * Configure floating menu JSON object in expected BTT format for dynamic item creation
@@ -434,17 +434,21 @@ var btt = (() => {
   };
 
   // src/FloatingMenu/main.ts
-  var items = async () => {
+  var getItems = async () => {
     const itemUpdateManager = new ItemUpdateManager(__FloatingMenuItems, __Mapping__);
-    let items2 = await itemUpdateManager.retrieveJson();
-    console.log(items2);
-    return items2;
+    let items = await itemUpdateManager.retrieveJson();
+    console.log(items);
+    return items;
   };
   return __toCommonJS(main_exports);
 })();
 
-async function retrieveItems() {
-    let items= await btt.items();
+/**
+ *  the "bundle_numpadviewer" will be replaced at build time by the configured "GlobalVar" in esbuild configuration file config.js
+ * @returns 
+ */
+export async function retrieveBTTItems() {
+    let items = await bundle_numpadviewer.getItems();
     console.log(items);
     return items;
 }

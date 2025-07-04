@@ -5,6 +5,7 @@
  * @param value 
  */
 export async function UpdateBttVariable(variable: string, value: BTTParamType) {
+    //#if !DEBUG_IN_SAFARI
     let type = typeof value;
     switch (type) {
         case BTTTypeName.Number:
@@ -16,6 +17,7 @@ export async function UpdateBttVariable(variable: string, value: BTTParamType) {
         default:
             break;
     }
+    //#endif
 }
 
 /**

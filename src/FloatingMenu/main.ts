@@ -4,12 +4,11 @@
 import { __Mapping__ } from "../app_mappings";
 import { __FloatingMenuItems } from "./Configs/ItemsConfig";
 import { ItemUpdateManager } from "./ItemUpdateManager";
-
 /**
- * This function is exposed in esbuild global var "btt". This must be used to get floating menu items configuration for BTT
+ * Main function to retrieve BTT dynamic items for floating menu
  * @returns Array of BTT items to dynamically create
  */
-export var items = async () => {
+export var getItems = async () => {
     const itemUpdateManager = new ItemUpdateManager(__FloatingMenuItems, __Mapping__);
     let items = await itemUpdateManager.retrieveJson();
     console.log(items);

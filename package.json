@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:FloatingMenu": "node ./build/build.js",
-    "watch:FloatingMenu": "node ./build/build.js --watch"
+    "build:FloatingMenu": "node ./build/build.js --name numpadviewer",
+    "watch:FloatingMenu": "node ./build/build.js --watch --name numpadviewer"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +14,6 @@
   "devDependencies": {
     "@types/jquery": "^3.5.32",
     "concurrently": "^9.2.0",
-    "cross-env": "^7.0.3",
-    "dotenv": "^17.0.0",
     "esbuild": "^0.25.5",
     "esbuild-plugin-conditional-build": "^1.0.2",
     "esbuild-plugin-replace": "^1.4.0"
