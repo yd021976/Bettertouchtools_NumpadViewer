@@ -6,8 +6,10 @@ All is bundled in one .js file in /output folder
 The original objective was to provide a bundler for developping complex javascript code to use in BetterTouchTool
 
 
-# Features
-### 1. Include conditional build
+# Main features
+### 1. Run in "watch" or "build" mode
+You can either run a one shot "build" (CMD+SHIFT+B) or run in watch mode by running task "Watch". Watch will rebuild the bundle as soon as a file as been changed
+### 2. Include conditional build
 
 You can in your code add conditionnal build like
 ```javascript
@@ -45,7 +47,7 @@ export async function GetBttVariable<T extends BTTParamType>(variable: string, t
 This allows, when `DEBUG_IN_SAFARI` conditional variable is set, to return a hard coded value instead of calling BTT function call. In this case, I can run the script in Safari (or any browser) to debug the code.
 
 
-### 2. String replacement
+### 3. String replacement
 
 You can use string replacement in code. For exemple in source code you can define
 ```typescript
@@ -65,8 +67,14 @@ And in config.js file define how to replace `__FullPath__` like
     ]
 ``` 
 **Note** that string replacement config allow either a "hard coded" value OR you can use a javascript expression by prefixing the replacement value by `js::`. If you want to use javascript expression, don't forget to `import` any dependency in `build.js` (in this exemple above, you must add `import path from 'path'`)
-# Using
+# Usage
 1. In terminal run `npm install` to install all depedencies
+2. Code :-)
+3. Build
+  * Either run one of the npm scripts in package.json in VSCode (Cmd+shift+P, then choose run task, then choose "Build" or "Watch")
+  * Either run "build" in VSCode (CMD+SHIFT+B), default build will run "Build" (not watch mode)
+  
+  The bundle file will be available in the /output folder (if output folder doesn't exist, create it before build)
 
 # Configuration
 The build configuration can be tuned in `/build/configs/config.js`. Configuration options are :

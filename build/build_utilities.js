@@ -118,6 +118,7 @@ export async function runBuild(isWatchMode, buildConf) {
     let ctx = await esbuild.context(buildConf);
     if (isWatchMode == undefined) {
         await ctx.rebuild();
+        await ctx.dispose();
         console.log("Build done");
     } else {
         await ctx.rebuild(); // first build
