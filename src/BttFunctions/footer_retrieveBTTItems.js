@@ -7,3 +7,4 @@ async function retrieveBTTItems() {
     console.log(items);
     return items;
 }
+async function test(){}

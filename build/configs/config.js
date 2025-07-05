@@ -21,6 +21,6 @@ export default {
     // Conditionnal build variables
     ConditionnalBuild:
     {
-        "DEBUG_IN_SAFARI": "1"
+        "DEBUG_IN_SAFARI": "0"
     }
 }

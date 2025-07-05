@@ -20,11 +20,18 @@ export const footerPlugin = ({ srcDir = 'src', replacements = {} } = {}) => ({
         for (const file of files) {
           try {
             let content = readFileSync(file, 'utf8');
-            // Optionally apply replacements to footer files
-            for (const [from, to] of Object.entries(replacements)) {
-              content = content.replaceAll(from, to);
+            let lines = content.split('\n');
+            for (var line of lines) {
+              // Optionally apply replacements to footer files
+              for (const [from, to] of Object.entries(replacements)) {
+                const isComment = line.trimStart();
+                // Do not replace in comments
+                if (!(/^(\/\/|\/\*|\*)/.test(isComment))) {
+                  line = line.replaceAll(from, to);
+                }
+                footerContents.push(line);
+              }
             }
-            footerContents.push(content);
           } catch (err) {
             console.error(`Error reading file ${file}:`, err);
           }
