@@ -1,5 +1,5 @@
 "use strict";
-var bundle_numpadviewer = (() => {
+var btt = (() => {
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -21,7 +21,7 @@ var bundle_numpadviewer = (() => {
   // src/FloatingMenu/main.ts
   var main_exports = {};
   __export(main_exports, {
-    getItems: () => getItems
+    items: () => items
   });
 
   // src/app_mappings.ts
@@ -212,9 +212,27 @@ var bundle_numpadviewer = (() => {
 
   // src/BTTFunctionBridge.ts
   async function UpdateBttVariable(variable, value) {
+    let type = typeof value;
+    switch (type) {
+      case "number" /* Number */:
+        await set_number_variable({ variable_name: variable, to: value });
+        break;
+      case "string" /* String */:
+        await set_string_variable({ variable_name: variable, to: value });
+        break;
+      default:
+        break;
+    }
   }
   async function GetBttVariable(variable, type) {
-    return "com.microsoft.VSCode";
+    switch (type) {
+      case "number" /* Number */:
+        return await get_number_variable({ variable_name: variable });
+      case "string" /* String */:
+        return await get_string_variable({ variable_name: variable });
+      default:
+        throw new Error(`Unsupported type ${type}`);
+    }
   }
 
   // src/constants.ts
@@ -337,7 +355,7 @@ var bundle_numpadviewer = (() => {
      * @returns Array of floating menu items to create by BTT in the format expected by BTT floating menu scripting
      */
     async parseRows() {
-      let items = [];
+      let items2 = [];
       var rowIndex = 1, columnIndex = 1, width = 0, height = 0;
       for (const numpadRow of this.FloatingMenuItems) {
         columnIndex = 1;
@@ -348,7 +366,7 @@ var bundle_numpadviewer = (() => {
             const itemKey = Object.keys(item)[0];
             const itemObj = item[itemKey];
             let data = await this.createBTTItemJSON(itemObj, rowIndex, columnIndex);
-            items.push(data);
+            items2.push(data);
             if (itemObj.type != void 0 && itemObj.type == "doubleWidth") columnIndex++;
             let currentHeight = Math.abs(data.BTTMenuItemY) + data.BTTMenuItemMaxHeight + this.MenuConfig.Padding;
             height = height < currentHeight ? currentHeight : height;
@@ -361,7 +379,7 @@ var bundle_numpadviewer = (() => {
       }
       await UpdateBttVariable("numpad_width", width);
       await UpdateBttVariable("numpad_height", height);
-      return items;
+      return items2;
     }
     /**
      * Configure floating menu JSON object in expected BTT format for dynamic item creation
@@ -416,21 +434,17 @@ var bundle_numpadviewer = (() => {
   };
 
   // src/FloatingMenu/main.ts
-  var getItems = async () => {
+  var items = async () => {
     const itemUpdateManager = new ItemUpdateManager(__FloatingMenuItems, __Mapping__);
-    let items = await itemUpdateManager.retrieveJson();
-    console.log(items);
-    return items;
+    let items2 = await itemUpdateManager.retrieveJson();
+    console.log(items2);
+    return items2;
   };
   return __toCommonJS(main_exports);
 })();
 
-/**
- *  the "bundle_numpadviewer" will be replaced at build time by the configured "GlobalVar" in esbuild configuration file config.js
- * @returns 
- */
-async function retrieveBTTItems() {
-    let items = await bundle_numpadviewer.getItems();
+async function retrieveItems() {
+    let items= await btt.items();
     console.log(items);
     return items;
 }

@@ -25,7 +25,7 @@ import buildConfig from './configs/config.js';
     console.log(`Strings to replace in source files = ${JSON.stringify(stringsToReplace)}`);
 
     // Init esbuild configuration
-    let esbuildConf = initBuildConf(buildConfig, params);
+    let esbuildConf = initBuildConf(buildConfig, params,condtionalConstants,stringsToReplace);
     await runBuild(params["watch"], esbuildConf)
         .catch((error) => {
             console.log(error);
