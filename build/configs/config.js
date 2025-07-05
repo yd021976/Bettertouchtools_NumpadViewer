@@ -8,7 +8,7 @@ export default {
     // Specify output path and filename
     Output: {
         path: "./output",
-        fileName: "floatingmenuNumpad.js"
+        fileName: "floatingMenuNumpad.js"
     },
 
     // strings to replace in source code

@@ -3,8 +3,8 @@
  * @returns 
  */
 async function retrieveBTTItems() {
+    // Get items from
     let items = await __BTT_GLOBAL_VAR__.getItems();
     console.log(items);
     return items;
 }
-async function test(){}
