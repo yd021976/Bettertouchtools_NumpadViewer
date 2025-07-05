@@ -14,13 +14,11 @@ import { watch } from 'fs';
  */
 export function initConditionnalBuildVars(conditionalVariables) {
     let condtionalConstants = [];
-    for (const entry of conditionalVariables) {
-        for (var conditionName in entry) {
-            const conditionnalValue = entry[conditionName];
+    for (const conditionName in conditionalVariables) {
+        const conditionnalValue = conditionalVariables[conditionName];
 
-            if (conditionnalValue == "1") {
-                condtionalConstants.push(conditionName);
-            }
+        if (conditionnalValue == "1") {
+            condtionalConstants.push(conditionName);
         }
     }
     return condtionalConstants;
@@ -34,18 +32,16 @@ export function initStringReplace(config) {
     const regex = /^js::/;
     let stringsToReplace = {};
     // Build conditionnal constants list : All constants set to "1" will be included
-    for (const entry of config) {
-        for (const stringName in entry) {
-            const stringValue = entry[stringName];
-            var replacementString = "";
-            if (regex.test(stringValue)) {
-                let js = stringValue.replace(regex, '');
-                replacementString = eval(js);
-            } else {
-                replacementString = stringValue;
-            }
-            stringsToReplace[stringName] = `"${replacementString}"`;
+    for (const stringName in config) {
+        const stringValue = config[stringName];
+        var replacementString = "";
+        if (regex.test(stringValue)) {
+            let js = stringValue.replace(regex, '');
+            replacementString = eval(js);
+        } else {
+            replacementString = stringValue;
         }
+        stringsToReplace[stringName] = `"${replacementString}"`;
     }
     return stringsToReplace;
 }
@@ -124,7 +120,7 @@ export async function runBuild(isWatchMode, buildConf) {
         await ctx.rebuild();
         console.log("Build done");
     } else {
-         await ctx.rebuild(); // first build
+        await ctx.rebuild(); // first build
         // Watch for src file changes
         watchFooterFiles('./src', async () => {
             try {
