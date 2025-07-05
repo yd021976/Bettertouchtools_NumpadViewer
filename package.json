@@ -15,7 +15,7 @@
     "@types/jquery": "^3.5.32",
     "concurrently": "^9.2.0",
     "esbuild": "^0.25.5",
-    "esbuild-plugin-conditional-build-fixed": "file:local_npm_modules/Conditional-Build",
+    "esbuild-plugin-conditional-build-fixed": "github:yd021976/Conditional-Build",
     "esbuild-plugin-replace": "^1.4.0"
   },
   "dependencies": {

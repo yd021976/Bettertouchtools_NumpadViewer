@@ -1,6 +1,6 @@
 import { replace } from 'esbuild-plugin-replace';
 import path, { basename } from 'path'; // used in config dynamic string to replace
-import conditionalBuild from 'esbuild-plugin-conditional-build';
+import conditionalBuild from 'esbuild-plugin-conditional-build-fixed';
 import { footerPlugin } from './plugins/footer/esbuild.jsfunc.footer.plugin.js';
 import { floatingmenuConfig } from './configs/esbuild.conf.floatingmenu.js';
 import { build_logs } from './plugins/logs/logs.plugin.js';
