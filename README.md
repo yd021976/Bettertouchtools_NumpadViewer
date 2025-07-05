@@ -52,6 +52,8 @@ You can use string replacement in code. For exemple in source code you can defin
 // @ts-expect-error
 private readonly _RootIconPath: string = __FullPath__; // __FullPath__ will be replace at build time
 ```
+**Note** It is important to add the comment `// @ts-expect-error` to tell typescript compiler to ignore the error. In this exemple variable `__FullPath__` does not exist. Without telling typescript compiler we "expect" this error, the code will not compile.
+
 And in config.js file define how to replace `__FullPath__` like
 ```jsonc
  // string to replace in source code
@@ -61,8 +63,8 @@ And in config.js file define how to replace `__FullPath__` like
             "__FullPath__": "js::path.resolve('./src/icons/shortcuts')" // dynamic value with javascript expression
         }
     ]
-```
-Note that string replacement config allow either a "hard coded" value OR you can use a javascript expression by prefixing the replacement value by `js::`. If you want to use javascript expression, don't forget to `import` any dependency in `build.js` (in this exemple above, you must add `import path from 'path'`)
+``` 
+**Note** that string replacement config allow either a "hard coded" value OR you can use a javascript expression by prefixing the replacement value by `js::`. If you want to use javascript expression, don't forget to `import` any dependency in `build.js` (in this exemple above, you must add `import path from 'path'`)
 # Using
 1. In terminal run `npm install` to install all depedencies
 
