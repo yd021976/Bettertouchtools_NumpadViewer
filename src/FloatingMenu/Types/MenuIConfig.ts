@@ -11,7 +11,9 @@ export namespace MenuConfig {
 
     export interface IItemBackgroundColors {
         BTTMenuItemBackgroundColor: string,
-        BTTMenuItemBackgroundColorHover: string
+        BTTMenuItemBackgroundColorHover: string,
+        BTTMenuItemBorderColorHover: string,
+        BTTMenuItemBorderColor: string
     }
     export interface IItemBackground {
         enabled: IItemBackgroundColors,
